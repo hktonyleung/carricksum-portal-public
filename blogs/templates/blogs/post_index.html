@@ -1,0 +1,23 @@
+{% extends "../portal/layout.html" %}
+{% load static %}
+
+{% block body %}
+
+<nav aria-label="breadcrumb">
+  <ol class="breadcrumb">
+    <li class="breadcrumb-item"><a href="/">Home</a></li>
+    <li class="breadcrumb-item active" aria-current="page">Blogs</li>
+  </ol>
+</nav>
+
+<div class="container apps">
+
+  <h1><a href="{% url 'blogs:post-index' %}">Blogs</a> <a href="{% url 'blogs:post-create' %}"><i class="far fa-plus-square"></i></a></h1>
+  {% include 'blogs/partial/posts.html' %}
+</div>
+
+{% endblock %}
+
+{% block css %}
+  <link href="{% static 'blogs/blogs.css' %}" rel="stylesheet"/>
+{% endblock %}

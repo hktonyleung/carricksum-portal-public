@@ -1,0 +1,20 @@
+<div>
+    <h2>Two Factor Authentication - Time-Based One Time Password</h2>
+    <div id="js-device-index">
+
+    </div>
+    {% if has_device %}
+        {% if confirmed %}
+            Your TOTP device is confirmed. You would like to 
+            <a href="{% url 'account:delete_device' %}">Remove</a>
+             it?
+        {% else %}
+            Your TOTP device is not confirmed. Please 
+            <a href="{% url 'account:token' %}">Confirm</a>
+             it?
+        {% endif %}
+    {% else %}
+        You don't have TOTP device. <a href="{% url 'account:token' %}">Add new device</a>
+    {% endif %}
+
+</div>

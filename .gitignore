@@ -1,0 +1,28 @@
+# Django #
+*.log
+*.pot
+*.pyc
+__pycache__
+db.sqlite3
+media
+*.bak
+staticfiles/
+*.rdb
+
+# Environments 
+.env 
+.venv 
+virtual_env/ 
+venv/ 
+ENV/ 
+virtual_env.bak/ 
+venv.bak/
+.env.*
+
+# Visual Studio Code # 
+.vscode/* 
+!.vscode/settings.json 
+!.vscode/tasks.json 
+!.vscode/launch.json 
+!.vscode/extensions.json 
+.history

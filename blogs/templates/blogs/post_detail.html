@@ -1,0 +1,32 @@
+{% extends "../portal/layout.html" %}
+
+{% block body %}
+
+<nav aria-label="breadcrumb">
+  <ol class="breadcrumb">
+    <li class="breadcrumb-item"><a href="/">Home</a></li>
+    <li class="breadcrumb-item" aria-current="page"><a href="{% url 'blogs:post-index'%}">Blogs</a></li>
+    <li class="breadcrumb-item active" aria-current="page">{{ object.topic }}</li>
+  </ol>
+</nav>
+
+<div class="container apps">
+
+    <h1>
+      Topic: {{ object.topic }}    
+      <a href="{% url 'blogs:post-update' object.id %}"><i class="fas fa-edit"></i></a>
+      <a href="{% url 'blogs:post-delete' object.id %}"><i class="far fa-trash-alt"></i></a>
+      
+    </h1>
+    <p>Introduction: {{ object.intro }}</p>
+    {{ object.content | safe }}
+    <p>Published: {{ object.created_by }}</p>
+    <p>Date: {{ object.updated_datetime|date }}</p>
+    <div style="display:flex">
+      {% for tag in article.tags.all %}
+      <a href="/" class="me-1 badge bg-info">{{ tag }}</a>
+      {% endfor %}
+    </div>
+</div>
+
+{% endblock %}

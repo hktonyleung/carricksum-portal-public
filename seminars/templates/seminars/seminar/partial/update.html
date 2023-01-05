@@ -1,0 +1,46 @@
+<form method="post" class="js-seminar-update" action="{% url 'seminars:seminar-update' form.instance.pk %}">
+  {% csrf_token %}
+  <div class="mb-3">
+      <label for="topic" class="form-label">Topic</label>
+      <input type="text" class="form-control" name="topic" id="topic" placeholder="Seminar Name" required value='{{ form.instance.topic }}'>
+      {% for error in form.topic.errors %}
+      <p class="help-block">{{ error }}</p>
+      {% endfor %}
+  </div>
+  <div class="mb-3">
+      <label for="start_date_time" class="form-label">Start Date Time</label>
+      <input type="datetime-local" class="form-control" name="start_date_time" id="start_date_time" placeholder="Start Date Time" required value='{{ form.instance.start_date_time|date:"Y-m-d" }}T{{ form.instance.start_date_time|date:"H:i" }}'>
+      {% for error in form.start_date_time.errors %}
+      <p class="help-block">{{ error }}</p>
+      {% endfor %}
+    </div>
+  <div class="mb-3">
+      <label for="end_date_time" class="form-label">End Date Time</label>
+      <input type="datetime-local" class="form-control" name="end_date_time" id="end_date_time" placeholder="End Date Time" required value='{{ form.instance.end_date_time|date:"Y-m-d" }}T{{ form.instance.end_date_time|date:"H:i" }}'>
+      {% for error in form.end_date_time.errors %}
+      <p class="help-block">{{ error }}</p>
+      {% endfor %}
+  </div>
+  <div class="mb-3">
+      <label for="venue" class="form-label">Venue</label>
+      {{ form.venue }}
+      {% for error in form.venue.errors %}
+      <p class="help-block">{{ error }}</p>
+      {% endfor %}
+  </div>
+  <div class="mb-3">
+      <label for="no_of_available_seat" class="form-label">No of available seat</label>
+      <input type="number" class="form-control" id="no_of_available_seat" name="no_of_available_seat"  min="1" required value='{{ form.instance.no_of_available_seat }}'>
+      {% for error in form.no_of_available_seat.errors %}
+      <p class="help-block">{{ error }}</p>
+      {% endfor %}
+  </div> 
+  {% if form.non_field_errors %}
+  {% for err in form.non_field_errors %}
+    <p class="help-block">{{ err }}</p>
+  {% endfor%}
+  {% endif %}
+  
+  <button type="submit" class="btn btn-primary">Update seminar</button>
+  
+</form>

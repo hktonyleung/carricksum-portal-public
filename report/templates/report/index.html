@@ -1,0 +1,41 @@
+{% extends "../portal/layout.html" %}
+
+{% block body %}
+
+<nav aria-label="breadcrumb">
+  <ol class="breadcrumb">
+    <li class="breadcrumb-item"><a href="/">Home</a></li>
+    <li class="breadcrumb-item active" aria-current="page">Report</li>
+  </ol>
+</nav>
+
+<div class="container seminar">
+
+  <!-- Three columns of text below the carousel -->
+  <h1>Report</h1>
+  <div class="row">
+    {% for report in reports %} 
+    <div class="col-lg-4">
+      <div class="card">
+        <div class="card-header">
+          {{report.name}}
+        </div>
+        <div class="card-body">
+            <p class="card-text">Start Date Time: {{report.generate_start_date|default_if_none:""}}</p>
+            <p class="card-text">End Date Time: {{report.generate_end_date|default_if_none:""}}</p>
+            <p class="card-text">Status: {{report.get_status_display}}</p>
+        {% if report.status == 'RE' %}
+            <a href="{% url 'report:report-generate' report.id %}" class="card-link">Generate</a>  
+        {% elif report.status == 'GE' %}
+        
+        {% elif report.status == 'CO' %}
+            <a href="{% url 'report:report-download' report.id %}" class="card-link" target="_blank">Download</a>             
+        {% endif %}
+        </div>
+      </div>
+    </div><!-- /.col-lg-4 -->    
+    {% endfor %}
+</div><!-- /.row -->
+</div>
+
+{% endblock %}

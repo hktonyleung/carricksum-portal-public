@@ -1,0 +1,73 @@
+{% extends "portal/layout.html" %}
+
+{% block body %}
+<nav aria-label="breadcrumb">
+  <ol class="breadcrumb">
+    <li class="breadcrumb-item"><a href="/">Home</a></li>
+    <li class="breadcrumb-item"><a href="{% url 'seminars:booking-index' %}">Seminar</a></li>
+    <li class="breadcrumb-item active" aria-current="page">Booking</li>
+  </ol>
+</nav>
+
+<div class="container marketing">
+    <div class="d-flex justify-content-center seminar-detail">
+        <div>
+            <h4>Topic: {{seminar.topic}}</h4>
+            <table class="table table-striped">
+                <tbody>
+                  <tr>
+                    <th scope="row">Start Date Time:</th>
+                    <td>{{seminar.start_date_time}}</td>
+                  </tr>
+                  <tr>
+                    <th scope="row">End Date Time:</th>
+                    <td>{{seminar.end_date_time}}</td>
+                  </tr>
+                  <tr>
+                    <th scope="row">Availabe Seat:</th>
+                    <td>{{seminar.no_of_available_seat}}</td>
+                  </tr>
+                  <tr>
+                    <th scope="row">Venue:</th>
+                    <td>{{seminar.venue}}</td>
+                  </tr>
+                </tbody>
+              </table>
+
+            {% if user.is_authenticated and seminar.no_of_available_seat > 0 %}
+            <form method="POST" class="js-auction-bid auction-form" action="{% url 'seminars:booking-create' seminar.id %}">
+                {%csrf_token%}
+                {% if form %}
+                {% for field in form %}
+                    {% for error in field.errors %}
+                <p class="error-color">{{error}}</p>
+                    {% endfor%}
+                {% endfor %}
+                {% if form.non_field_errors %}
+                <div class="error-color">
+                    <p>{{form.non_field_errors}}</p>
+                </div>
+                {% endif %}                
+                {% endif %}
+
+
+                <div class="form-group">
+                    <input class="form-control" type="hidden" id="seminar_id" name="seminar_id" value="{{seminar.id}}">
+                </div>
+                
+                <div class="form-group">
+                    <input class="btn btn-primary" type="submit" value="Confirm Booking">
+                </div>
+            </form>
+            {% else %}
+            No more vacancy 
+            {% endif %}          
+        </div>
+
+ 
+    </div>
+
+</div>
+
+
+{% endblock %}

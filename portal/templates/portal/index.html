@@ -1,0 +1,71 @@
+{% extends "portal/layout.html" %}
+
+{% block body %}
+
+{% include 'portal/partial/announcements.html' %}
+
+
+<div class="container apps">
+    <!-- Three columns of text below the carousel -->
+    <div class="row">
+      <div class="col-lg-4">
+        <div class="fa-4x">
+          <i class="fas fa-tv"></i>
+        </div>
+        <h2>Seminar</h2>
+        <p><a class="btn btn-secondary" href="{% url 'seminars:booking-index' %}">View details &raquo;</a></p>
+      </div><!-- /.col-lg-4 -->
+      <div class="col-lg-4">
+        <div class="fa-4x">
+          <i class="fas fa-blog"></i>
+        </div>         
+        <h2>Blog</h2>
+        <p><a class="btn btn-secondary" href="{% url 'blogs:post-index' %}">View details &raquo;</a></p>
+      </div>
+      <div class="col-lg-4">
+        <div class="fa-4x">
+          <i class="fas fa-map-pin"></i>
+        </div>
+        <h2>Branch</h2>
+        <p><a class="btn btn-secondary" href="{% url 'branches:branches-index' %}">View details &raquo;</a></p>
+      </div><!-- /.col-lg-4 -->
+      <div class="col-lg-4">
+        <div class="fa-4x">
+          <!--i class="fab fa-searchengin"></i-->
+          <span class="fa-layers fa-fw">
+            <i class="fab fa-searchengin"></i>
+            <!--i class="fa-inverse fa-layers-text" style="color: red;" data-fa-transform="shrink-6">WIP</i-->
+          </span>
+        </div>
+        <h2>Address</h2>
+        <p><a class="btn btn-secondary" href="{% url 'address:search-index' %}">View details &raquo;</a></p>
+      </div><!-- /.col-lg-4 -->
+      <div class="col-lg-4">
+        <div class="fa-4x">
+          <!--i class="fab fa-searchengin"></i-->
+          <span class="fa-layers fa-fw">
+            <i class="fas fa-comments"></i>
+            <i class="fa-inverse fa-layers-text" style="color: red;" data-fa-transform="shrink-6">WIP</i>
+          </span>
+        </div>
+        <h2>Chat</h2>
+        <p><a class="btn btn-secondary" href="{% url 'chat:chat-index'%}">View details &raquo;</a></p>
+      </div><!-- /.col-lg-4 -->
+      <div class="col-lg-4">
+        <div class="fa-4x">
+          <!--i class="fab fa-searchengin"></i-->
+          <span class="fa-layers fa-fw">
+            <i class="fas fa-file-invoice"></i>
+            <i class="fa-inverse fa-layers-text" style="color: red;" data-fa-transform="shrink-6">2FA</i>
+          </span>
+        </div>
+        <h2>Report</h2>
+        <p><a class="btn btn-secondary" href="{% url 'report:report-index' %}">View details &raquo;</a></p>
+      </div><!-- /.col-lg-4 -->
+    </div><!-- /.row -->
+</div>    
+{% endblock %}
+
+{% block javascript %}
+<script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.9.0/js/all.min.js"></script>
+{% endblock %}

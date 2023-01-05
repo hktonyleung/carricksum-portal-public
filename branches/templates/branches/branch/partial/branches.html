@@ -1,0 +1,17 @@
+<div class="row " id="js-partial-branches-management">
+    {% for branch in branches %} 
+    <div class="col-lg-4 ">
+      <div class="card">
+        <div class="card-header">
+          {{branch.name}}
+        </div>
+        <div class="card-body">
+          <p class="card-text">Description: {{branch.desc}}</p>
+          <a data-url="{% url 'branches:branches-update' branch.pk %}" class="card-link js-branch-update-form">Edit</a>
+          <a data-url="{% url 'branches:branches-update-spatial' branch.pk %}" class="card-link js-branch-update-form">Edit Polygon</a>  
+          <a data-url="{% url 'branches:branches-delete' branch.pk %}" class="card-link js-branch-delete-form">Delete</a> 
+        </div>
+      </div>
+    </div><!-- /.col-lg-4 -->    
+    {% endfor %}
+</div><!-- /.row -->

@@ -1,0 +1,43 @@
+{% load static %}
+<form method="post" class="js-branch-update" action="{% url 'branches:branches-update' form.instance.pk %}" crud='Update'>
+    {% csrf_token %}
+    <div class="mb-3">
+        <label for="no" class="form-label">Name</label>
+        <input type="text" class="form-control" name="name" id="name" placeholder="Name" required value='{{ form.instance.name }}'>
+        {% for error in form.name.errors %}
+        <p class="help-block">{{ error }}</p>
+        {% endfor %}
+    </div>
+    <div class="mb-3">
+        <label for="desc" class="form-label">Description</label>
+        <input type="text" class="form-control" name="desc" id="desc" placeholder="Description" required value='{{ form.instance.desc }}'>
+        {% for error in form.desc.errors %}
+        <p class="help-block">{{ error }}</p>
+        {% endfor %}
+    </div>
+    <!--div class="mb-3" id="updatemap"></div-->
+    <!--div class="mb-3" id="map">
+    </div-->
+    <!--div class="mb-3 d-none">
+      <label for="geo" class="form-label">geo</label>
+      <input type="text" class="form-control" name="wkt" id="geo" placeholder="WKT" required value='{{ wkt }}'>
+    </div>
+
+    <div class="mb-3 d-none">
+      <label for="geojson_branch" class="form-label">geojson_branch</label>
+      <input type="text" class="form-control" name="geojson_branch" id="geojson_branch" placeholder="geojson_branch" required value='{{ geojson_branch }}'>
+    </div-->
+
+
+    {% if form.non_field_errors %}
+    {% for err in form.non_field_errors %}
+      <p class="help-block">{{ err }}</p>
+    {% endfor%}
+    {% endif %}
+    
+    <button type="submit" class="btn btn-primary">Update Branch</button>    
+</form>  
+
+
+
+  

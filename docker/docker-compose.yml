@@ -1,0 +1,43 @@
+version: '3.8'
+
+services:
+  db:
+    image: postgis/postgis:11-2.5-alpine
+    volumes:
+      - postgres_data:/var/lib/postgresql/data/
+    ports:
+      - "5432:5432"
+    environment:
+      - POSTGRES_USER=tonyleung
+      - POSTGRES_PASSWORD=tonyleung
+      - POSTGRES_DB=tonyleung
+
+  redis:
+    image: redis:alpine
+  
+  sqs:
+    image: roribio16/alpine-sqs
+    ports:
+      - 9324:9324
+      - 9325:9325
+    volumes:
+      - ../config/elasticmq.conf:/opt/config/elasticmq.conf
+
+  web:
+    build: ../
+    command: >
+      sh ./setup.sh
+
+    volumes:
+      - ../:/usr/src/carricksum-portal/
+    ports:
+      - 8000:8000
+    env_file:
+      - ./.env.dev
+    depends_on:
+      - db
+      - sqs
+      - redis
+
+volumes:
+  postgres_data:

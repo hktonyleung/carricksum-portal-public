@@ -1,0 +1,18 @@
+{% extends "../portal/layout.html" %}
+
+{% block body %}
+
+{% load static %}
+
+<nav aria-label="breadcrumb">
+    <ol class="breadcrumb">
+        <li class="breadcrumb-item"><a href="/">Home</a></li>
+        <li class="breadcrumb-item"><a href="{% url 'blogs:post-index'%}">Blogs</a></li>
+        <li class="breadcrumb-item"><a href="{% url 'blogs:post-detail' pk %}">{{form.topic.value}}</a></li>
+        <li class="breadcrumb-item active" aria-current="page">Edit</li>
+    </ol>
+</nav>
+
+{% include 'blogs/partial/form.html' %}
+
+{% endblock %}

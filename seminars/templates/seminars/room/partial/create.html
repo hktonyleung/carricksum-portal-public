@@ -1,0 +1,25 @@
+<form method="post" class="js-room-create" action="{% url 'seminars:room-create' %}" crud='Create'>
+    {% csrf_token %}
+    <div class="mb-3">
+        <label for="no" class="form-label">Number</label>
+        <input type="text" class="form-control" name="no" id="no" placeholder="Room Number" value="{{ form.no.value|default_if_none:'' }}">
+        {% for error in form.no.errors %}
+        <p class="help-block">{{ error }}</p>
+        {% endfor %}
+    </div>
+   
+    <div class="mb-3">
+        <label for="desc" class="form-label">Description</label>
+        <input type="text" class="form-control" id="desc" name="desc" placeholder="Description" required value="{{ form.desc.value|default_if_none:'' }}">
+        {% for error in form.yahoo.errors %}
+        <p class="help-block">{{ error }}</p>
+        {% endfor %}
+    </div>
+
+    {% if form.non_field_errors %}
+    {% for err in form.non_field_errors %}
+      <p class="help-block">{{ err }}</p>
+    {% endfor%}
+    {% endif %}
+    <button type="submit" class="btn btn-primary">Create room</button>
+</form>

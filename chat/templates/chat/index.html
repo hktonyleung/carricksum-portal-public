@@ -1,0 +1,19 @@
+{% extends "../portal/layout.html" %}
+
+{% block body %}
+
+<nav aria-label="breadcrumb">
+  <ol class="breadcrumb">
+    <li class="breadcrumb-item"><a href="/">Home</a></li>
+    <li class="breadcrumb-item active" aria-current="page">Chat Room</li>
+  </ol>
+</nav>
+
+<div class="container seminar">
+
+  <!-- Three columns of text below the carousel -->
+  <h1>Chat Room</h1>
+  {% include 'chat/partial/chat_rooms.html' %}
+</div>
+
+{% endblock %}

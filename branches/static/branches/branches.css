@@ -1,0 +1,13 @@
+html, body {
+  height: 100%;
+  margin: 0;
+}
+#map {
+  height: 60vh;
+}
+
+#hiddenwkt {
+  opacity: 0;
+  width: 0;
+  float: left; /* Reposition so the validation message shows over the label */
+}

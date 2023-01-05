@@ -1,0 +1,34 @@
+{% extends "portal/layout.html" %}
+
+{% block body %}
+
+<main class="form-signin">
+    <form action="{% url 'login' %}" method="post">
+        <br><br>
+        <h1 class="h3 mb-3 fw-normal">Please sign in</h1>
+        <input type="hidden" name="next" value="{{ request.GET.next }}"/>
+        {% csrf_token %}
+        <div class="form-floating">
+        <input type="username" name="username" class="form-control" id="floatingInput" placeholder="name@example.com">
+        <label for="floatingInput">Username</label>
+        </div>
+        <div class="form-floating">
+        <input type="password" name="password" class="form-control" id="floatingPassword" placeholder="Password">
+        <label for="floatingPassword">Password</label>
+        </div>
+
+        <div class="checkbox mb-3">
+            <label>
+                <input type="checkbox" value="remember-me"> Remember me
+            </label>
+        </div>
+        {% if message %}
+        <div style="color: red;">Login Failure: {{ message }}</div>
+        {% endif %}
+        <button class="w-100 btn btn-lg btn-primary" type="submit">Sign in</button>
+    </form>
+    Don't have an account? <a href="{% url 'register' %}">Register here.</a>   
+</main>
+
+{% endblock %}
+

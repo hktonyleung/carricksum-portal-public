@@ -1,0 +1,31 @@
+{% extends "../portal/layout.html" %}
+
+{% block body %}
+
+{% load static %}
+<script src="{% static 'seminars/room.js' %}"></script>
+
+
+<nav aria-label="breadcrumb">
+  <ol class="breadcrumb">
+    <li class="breadcrumb-item"><a href="/">Home</a></li>
+    <li class="breadcrumb-item active" aria-current="page">Room Management</li>
+  </ol>
+</nav>
+
+<div class="container apps">
+  <!-- Three columns of text below the carousel -->
+  <h1>Room Management <i class="far fa-plus-square js-room-create-form" data-url="{% url 'seminars:room-create' %}"></i></h1>
+  {% include 'seminars/room/partial/rooms.html' %}
+
+  <!-- THE MODAL WE WILL BE USING -->
+  <div class="modal fade" id="modal-room">
+    <div class="modal-dialog" >
+      <div class="modal-content">
+        <div class="modal-body" id="js-partial-room-form">
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}

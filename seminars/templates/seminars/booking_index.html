@@ -1,0 +1,19 @@
+{% extends "../portal/layout.html" %}
+
+{% block body %}
+
+<nav aria-label="breadcrumb">
+  <ol class="breadcrumb">
+    <li class="breadcrumb-item"><a href="/">Home</a></li>
+    <li class="breadcrumb-item active" aria-current="page">Seminar</li>
+  </ol>
+</nav>
+
+<div class="container seminar">
+
+  <!-- Three columns of text below the carousel -->
+  <h1>Seminar</h1>
+  {% include 'seminars/booking/bookings.html' %}
+</div>
+
+{% endblock %}

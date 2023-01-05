@@ -1,0 +1,19 @@
+<div class="row " id="js-partial-seminars-management">
+    {% for seminar in seminars %} 
+    <div class="col-lg-4 ">
+      <div class="card">
+        <div class="card-header">
+          {{seminar.topic}}
+        </div>
+        <div class="card-body">
+          <p class="card-text">Start: {{seminar.start_date_time}}</p>
+          <p class="card-text">End: {{seminar.end_date_time}}</p>
+          <p class="card-text">Availabe Seat: {{seminar.no_of_available_seat}}</p>
+          <p class="card-text">Venue: {{seminar.venue}}</p>
+          <a data-url="{% url 'seminars:seminar-update' seminar.pk %}" class="card-link js-seminar-update-form">Edit</a>  
+          <a data-url="{% url 'seminars:seminar-delete' seminar.pk %}" class="card-link js-seminar-delete-form">Delete</a> 
+        </div>
+      </div>
+    </div><!-- /.col-lg-4 -->    
+    {% endfor %}
+</div><!-- /.row -->

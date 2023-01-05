@@ -1,0 +1,53 @@
+{% extends "../portal/layout.html" %}
+
+{% load static %}
+
+{% block body %}
+
+<nav aria-label="breadcrumb">
+  <ol class="breadcrumb">
+    <li class="breadcrumb-item"><a href="/">Home</a></li>
+    <li class="breadcrumb-item active" aria-current="page">Address</li>
+  </ol>
+</nav>
+
+<div class="container seminar">
+  <form id="search-form" method="get" autocomplete="off" action="{% url 'search:address-suggestion' %}" search-action="{% url 'address:search-address' %}">
+    <div class="form-group">
+      <label for="search">Search Address</label>
+      <input type="query" class="form-control autocomplete" id="search" aria-describedby="addressHelp" placeholder="Enter address">
+      <small id="addressHelp" class="form-text text-muted">Please enter the address for searching</small>
+    </div>
+    <button type="submit" class="btn btn-primary">Search</button>
+  </form>
+      
+</div>
+<div class="container seminar">
+  <div>
+    <div class="result"></div>
+  </div>  
+</div>
+
+<!-- Modal -->
+<div class="modal fade" id="documentModal" tabindex="-1" aria-labelledby="documentModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-fullscreen modal-dialog-scrollable">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="documentModalLabel">Related Document</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <iframe id="modalFrame"  
+      style="width: 100%; height: 100%;">
+          <p>Your browser does not support iframes.</p>
+      </iframe>
+    </div>
+  </div>
+</div>
+{% endblock %}
+
+
+{% block javascript %}
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.13.0/themes/base/jquery-ui.css">
+    <script src="{% static 'address/index.js' %}"></script>
+    <script src="https://code.jquery.com/ui/1.13.0/jquery-ui.js"></script>
+{% endblock %}

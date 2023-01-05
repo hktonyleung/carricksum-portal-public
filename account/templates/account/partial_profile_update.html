@@ -1,0 +1,24 @@
+<form method="post" class="js-profile-update" action="{% url 'account:profile_update' %}">
+    {% csrf_token %}
+    <div class="mb-3">
+        <label for="first_name" class="form-label">First Name</label>
+        <input type="text" class="form-control" name="first_name" id="first_name" placeholder="First Name" value='{{ user.first_name }}'>
+        {% for error in form.first_name.errors %}
+        <p class="help-block">{{ error }}</p>
+        {% endfor %}
+    </div>
+    <div class="mb-3">
+        <label for="last_name" class="form-label">Last Name</label>
+        <input type="text" class="form-control" id="last_name" name="last_name" placeholder="Last Name" value='{{ user.last_name }}'>
+        {% for error in form.last_name.errors %}
+        <p class="help-block">{{ error }}</p>
+        {% endfor %}
+    </div>
+    {% if form.non_field_errors %}
+    {% for err in form.non_field_errors %}
+    <p class="help-block">{{ err }}</p>
+    {% endfor%}
+    {% endif %}
+    <button type="submit" class="btn btn-primary">Update profile</button>
+</form>
+

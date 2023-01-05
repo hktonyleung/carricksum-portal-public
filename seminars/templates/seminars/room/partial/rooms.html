@@ -1,0 +1,16 @@
+<div class="row " id="js-partial-rooms-management">
+    {% for room in rooms %} 
+    <div class="col-lg-4 ">
+      <div class="card">
+        <div class="card-header">
+          {{room.no}}
+        </div>
+        <div class="card-body">
+          <p class="card-text">Description: {{room.desc}}</p>
+          <a data-url="{% url 'seminars:room-update' room.pk %}" class="card-link js-room-update-form">Edit</a>  
+          <a data-url="{% url 'seminars:room-delete' room.pk %}" class="card-link js-room-delete-form">Delete</a> 
+        </div>
+      </div>
+    </div><!-- /.col-lg-4 -->    
+    {% endfor %}
+</div><!-- /.row -->

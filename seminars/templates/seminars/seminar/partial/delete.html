@@ -1,0 +1,12 @@
+<form method="post" action="{% url 'seminars:seminar-delete' seminar.id %}" class="js-seminar-delete">
+    {% csrf_token %}
+    <div class="modal-header">
+      <h4 class="modal-title">Confirm seminar deletion</h4>
+    </div>
+    <div class="modal-body">
+      <p class="lead">Are you sure you want to delete the seminar <strong><u>{{ seminar.topic }}</u></strong>?</p>
+    </div>
+    <div class="modal-footer">
+      <button type="submit" class="btn btn-danger">Delete seminar</button>
+    </div>
+  </form>

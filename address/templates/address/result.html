@@ -1,0 +1,16 @@
+<table class="table">
+    <thead>
+      <tr>
+        <th scope="col">Full Address</th>
+        <th scope="col">Document</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for address in addresses %} 
+      <tr>
+        <td>{{ address.fullAddress }}</td>
+        <td><a class="js-address-document" href="{{ address.uploadFile }}">Preview</a></td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>

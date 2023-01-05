@@ -1,0 +1,70 @@
+<form method="post" class="js-address-update" action="{% url 'address:address-update' form.instance.pk %}" crud='Update'>
+    {% csrf_token %}
+    <div class="mb-3">
+        <label for="buildingName" class="form-label">Building Name</label>
+        <input type="text" class="form-control" name="buildingName" id="buildingName" placeholder="Building Name" value="{{ form.instance.buildingName }}">
+        {% for error in form.buildingName.errors %}
+        <p class="help-block">{{ error }}</p>
+        {% endfor %}
+    </div>
+   
+    <div class="mb-3">
+        <label for="streetName" class="form-label">Street Name</label>
+        <input type="text" class="form-control" id="streetName" name="streetName" placeholder="Street Name" required value="{{ form.instance.streetName }}">
+        {% for error in form.streetName.errors %}
+        <p class="help-block">{{ error }}</p>
+        {% endfor %}
+    </div>
+
+    <div class="mb-3">
+        <label for="buildingNoFrom" class="form-label">Building No From</label>
+        <input type="text" class="form-control" id="buildingNoFrom" name="buildingNoFrom" placeholder="Building No From" required value="{{ form.instance.buildingNoFrom }}">
+        {% for error in form.buildingNoFrom.errors %}
+        <p class="help-block">{{ error }}</p>
+        {% endfor %}
+    </div>
+
+    <div class="mb-3">
+        <label for="buildingNoTo" class="form-label">Building No To</label>
+        <input type="text" class="form-control" id="buildingNoTo" name="buildingNoTo" placeholder="Building No To" required value="{{ form.instance.buildingNoTo }}">
+        {% for error in form.buildingNoTo.errors %}
+        <p class="help-block">{{ error }}</p>
+        {% endfor %}
+    </div>
+
+    <div class="mb-3">
+        <label for="district" class="form-label">District</label>
+        <input type="text" class="form-control" id="district" name="district" placeholder="District" required value="{{ form.instance.district }}">
+        {% for error in form.district.errors %}
+        <p class="help-block">{{ error }}</p>
+        {% endfor %}
+    </div>
+
+    <div class="mb-3">
+        <label for="fullAddress" class="form-label">Full Address</label>
+        <input type="text" class="form-control" id="fullAddress" name="fullAddress" placeholder="Full Address" required value="{{ form.instance.fullAddress }}">
+        {% for error in form.fullAddress.errors %}
+        <p class="help-block">{{ error }}</p>
+        {% endfor %}
+    </div>
+
+    <div class="mb-3">
+        <label for="relatedDocument" class="form-label">Related Document</label>
+        <input type="text" class="form-control" id="relatedDocument" name="relatedDocument" placeholder="Related Document" required value="{{ form.instance.relatedDocument }}">
+        {% for error in form.relatedDocument.errors %}
+        <p class="help-block">{{ error }}</p>
+        {% endfor %}
+    </div>
+
+
+    {% if form.non_field_errors %}
+    {% for err in form.non_field_errors %}
+      <p class="help-block">{{ err }}</p>
+    {% endfor%}
+    {% endif %}
+    
+    <button type="submit" class="btn btn-primary">Update address</button>    
+</form>  
+
+
+  

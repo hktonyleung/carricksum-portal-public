@@ -1,0 +1,60 @@
+{% extends "portal/layout.html" %}
+
+{% block body %}
+<nav aria-label="breadcrumb">
+  <ol class="breadcrumb">
+    <li class="breadcrumb-item"><a href="/">Home</a></li>
+    <li class="breadcrumb-item"><a href="{% url 'seminars:booking-index'%}">Seminar</a></li>
+    <li class="breadcrumb-item active" aria-current="page">Booking Result</li>
+  </ol>
+</nav>
+<div class="container marketing">
+
+        <div class="d-flex justify-content-center seminar-detail">
+          <div id="print_ticket" style="border:1px solid rgb(223, 225, 229);">
+            <table id="ticket_table" class="table table-hover display" style="width:100%">
+              <thead>
+                  <tr>
+                      <th style="text-align: left;">Ticket</th>
+                  </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <th style="text-align: left;">Seminar Topic:</th>
+                  <td>{{seminar.topic}}</td>
+                </tr>                        
+                <tr>
+                  <th style="text-align: left;">Start Date Time:</th>
+                  <td>{{seminar.start_date_time}}</td>
+                </tr>
+                <tr>
+                  <th style="text-align: left;">End Date Time:</th>
+                  <td>{{seminar.end_date_time}}</td>
+                </tr>
+                <tr>
+                  <th style="text-align: left;">Venue:</th>
+                  <td>{{seminar.venue}}</td>
+                </tr>
+              </tbody>
+            </table>
+          <div>
+          {{ svg|safe }}
+        </div>
+        <button type="button" class="btn btn-secondary" 
+                onclick="printJS(
+                  { 
+                    printable: 'print_ticket', 
+                    type: 'html',
+                    targetStyles: ['*'],
+                  })">
+                Print the ticket
+        </button> 
+      </div>
+
+    </div>
+    
+</div>
+
+
+
+{% endblock %}

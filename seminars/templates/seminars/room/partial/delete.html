@@ -1,0 +1,12 @@
+<form method="post" action="{% url 'seminars:room-delete' room.id %}" class="js-room-delete" crud='Delete'>
+    {% csrf_token %}
+    <div class="modal-header">
+      <h4 class="modal-title">Confirm room deletion</h4>
+    </div>
+    <div class="modal-body">
+      <p class="lead">Are you sure you want to delete the room <strong><u>{{ room.no }}</u></strong>?</p>
+    </div>
+    <div class="modal-footer">
+      <button type="submit" class="btn btn-danger">Delete room</button>
+    </div>
+  </form>

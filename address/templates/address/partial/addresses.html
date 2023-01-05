@@ -1,0 +1,16 @@
+<div class="row " id="js-partial-addresses-management">
+    {% for address in addresses %} 
+    <div class="col-lg-4 ">
+      <div class="card">
+        <div class="card-header">
+          {{address.buildingName}}
+        </div>
+        <div class="card-body">
+          <p class="card-text">Full Address: {{address.fullAddress}}</p>
+          <a data-url="{% url 'address:address-update' address.pk %}" class="card-link js-address-update-form">Edit</a>  
+          <a data-url="{% url 'address:address-delete' address.pk %}" class="card-link js-address-delete-form">Delete</a> 
+        </div>
+      </div>
+    </div><!-- /.col-lg-4 -->    
+    {% endfor %}
+</div><!-- /.row -->

@@ -1,0 +1,23 @@
+{% extends "../portal/layout.html" %}
+
+{% block body %}
+
+{% load static %}
+
+<nav aria-label="breadcrumb">
+    <ol class="breadcrumb">
+        <li class="breadcrumb-item"><a href="/">Home</a></li>
+        <li class="breadcrumb-item"><a href="{% url 'blogs:post-index'%}">Blogs</a></li>
+        <li class="breadcrumb-item active" aria-current="page">Delete</li>
+    </ol>
+</nav>
+
+<div class="container apps" >
+    <form style="text-align:center" method="post">{% csrf_token %}
+        <p >Are you sure you want to delete "{{ object }}"?</p>
+        <input type="submit" class="btn btn-primary" value="Confirm">
+    </form>
+</div>
+
+
+{% endblock %}

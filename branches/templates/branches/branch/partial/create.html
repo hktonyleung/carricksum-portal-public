@@ -1,0 +1,46 @@
+{% load static %}
+<form method="post" class="js-branch-create" action="{% url 'branches:branches-create' %}"  crud='Create'>
+    {% csrf_token %}
+    <div class="mb-3">
+        <label for="name" class="form-label">Name</label>
+        <input required type="text" class="form-control" name="name" id="name" placeholder="Branch Name" value="{{ form.name.value|default_if_none:'' }}">
+        {% for error in form.name.errors %}
+        <p class="help-block">{{ error }}</p>
+        {% endfor %}
+    </div>
+  
+    <div class="mb-3">
+        <label for="desc" class="form-label">Description</label>
+        <input required type="text" class="form-control" name="desc" id="desc" placeholder="Branch Description" value="{{ form.desc.value|default_if_none:'' }}">
+        {% for error in form.desc.errors %}
+        <p class="help-block">{{ error }}</p>
+        {% endfor %}
+    </div>
+    <!--div class="mb-3" id="hiddenwkt">
+      <label for="wkt" class="form-label">Geo</label>
+      <input required type="text" class="form-control" name="wkt" id="geo" placeholder="WKT" value="">
+      {% for error in form.desc.errors %}
+      <p class="help-block">{{ error }}</p>
+      {% endfor %} 
+    </div>      
+    <div class="mb-3" id="map">
+    </div-->
+
+
+    {% if form.non_field_errors %}
+    {% for err in form.non_field_errors %}
+      <p class="help-block">{{ err }}</p>
+    {% endfor%}
+    {% endif %}
+    <button type="submit" class="btn btn-primary">Create Branch</button>
+    
+</form>
+
+<!--
+{% block javascript %}
+  <script src="{% static 'branches\create.js' %}"></script>
+{% endblock %}
+-->
+
+
+
